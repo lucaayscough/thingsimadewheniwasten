@@ -1,0 +1,109 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+}
+
+body{
+	background-color: #dcb736;
+}
+
+#container{
+	width: 946px;
+	margin: auto;
+}
+
+#header{
+	background-image: url(../images/header.png);
+	height: 249px;
+	width: 946px;
+}
+
+#tail{
+	background-image: url(../images/tail.png);
+	height: 236px;
+	width: 117px;
+	position: absolute;
+	top: 0px;
+	left: 1156px;
+}
+
+.rapid_button1{
+	height: 100px;
+	height: 44px;
+	width: 97px;
+	margin-top: 129px;
+	margin-left: 11px;
+	float: left;
+}
+
+.rapid_button2{
+	height: 100px;
+	height: 44px;
+	width: 97px;
+	margin-top: 129px;
+	margin-left: 4px;
+	float: left;
+}
+
+.rapid_button3{
+	height: 100px;
+	height: 44px;
+	width: 97px;
+	margin-top: 129px;
+	margin-left: 4px;
+	float: left;
+}
+
+.rapid_button4{
+	height: 100px;
+	height: 44px;
+	width: 97px;
+	margin-top: 129px;
+	margin-left: 4px;
+	float: left;
+}
+
+#share{
+	float: left;
+	margin-top: 208px;
+	margin-left: -410px;
+}
+
+#body{
+	background-color: #fff;
+	width: 944px;
+	margin: auto;
+}
+
+#ads_top{
+	background-color: #fff;
+	height: auto;
+	width: 100%;
+	padding-bottom: 30px;
+	padding-top: 6px;
+}
+
+#contents{
+	width: 653px;
+	margin-left: 5px;
+	padding-bottom: 5px;
+}
+
+#title{
+	
+}
+
+#menu{
+	width: 291px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+
+#ads_bottom{
+	background-color: #fff;
+	height: auto;
+	width: 100%;
+	padding-bottom: 6px;
+	padding-top: 50px;
+}

@@ -1,0 +1,47 @@
+#il_sito{
+	background-image: url(../layout/images/menu/il_sito.png);
+	height: 34px;
+	width: 275px;
+}
+
+#multimedia{
+	background-image: url(../layout/images/menu/multimedia.png);
+	height: 34px;
+	width: 275px;
+}
+
+#info{
+	background-image: url(../layout/images/menu/info.png);
+	height: 34px;
+	width: 275px;
+}
+
+.start_links{
+	background-image: url(../layout/images/menu/start_links.png);
+	height: auto;
+	width: 275px;
+}
+
+.start_links ul{
+	text-align: right;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	list-style: none;
+}
+
+.start_links a{
+	color: #00f;
+	text-decoration: none;
+}
+
+.start_links a:hover{
+	text-decoration: underline;
+	color: #06f;
+}
+
+.end_links{
+	background-image: url(../layout/images/menu/end_links.png);
+	height: 6px;
+	width: 275px;
+	margin-bottom: 25px;
+}

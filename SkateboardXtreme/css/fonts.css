@@ -1,0 +1,9 @@
+@font-face {
+   font-family: 'ancient';
+   src: url('../fonts/ancient_god.ttf') format('truetype');
+}
+
+@font-face {
+   font-family: 'galaxy';
+   src: url('../fonts/galaxy.ttf') format('truetype');
+}

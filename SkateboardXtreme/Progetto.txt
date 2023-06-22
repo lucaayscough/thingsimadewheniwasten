@@ -1,0 +1,15 @@
+Proggetto SkateboardXtreme:
+
+   Member:
+	  1. creare funzioni basilari:
+		 1. cambia password/e-mail/username;
+		 2. creare generatore di password(da mettere nella pagina per cambiare la password).
+
+   Home:
+      1. Installare CuteNews temporaneamente per le news.
+
+   Forum:
+      1. Creare forum con PHPBB temporaneamente.
+
+   Altre pagine:
+      1. Creare pagine rimanenti per inserire contenuti rimanenti.

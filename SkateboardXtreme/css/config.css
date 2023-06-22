@@ -1,0 +1,35 @@
+body {
+   margin: 0;
+   padding: 0;
+   background-image: url(../images/backgrounds/background.jpg);
+   color: #fff;
+   word-wrap: break-word;
+   font-family: arial;
+   letter-spacing: 0px;
+   font-size: 13px;
+}
+
+body a{
+   color: #000;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+body a:hover{
+   color: #FFBA00;
+   border-bottom: dotted 1px orange;
+   
+}
+
+.links{
+   font-family: 'ancient';
+   font-size: 20px;
+   margin: auto;
+   margin-top: 7px;
+   float: left;
+   margin-left: 65px;
+}
+
+.links a:hover{
+   border: none;
+}

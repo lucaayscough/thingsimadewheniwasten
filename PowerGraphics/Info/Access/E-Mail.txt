@@ -1,0 +1,4 @@
+Main:
+	Username: graficalive@gmail.com
+	Password: sneasel98
+	Recovery: lucaayscough@gmail.com
