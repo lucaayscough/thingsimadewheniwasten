@@ -1,0 +1,110 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-image: url(homebg.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-color: #478dcb;
+	font-size: 14px;
+	font-family: arial;
+	font-weight: bold;
+	color: #000;
+	word-wrap: break-word;
+}
+
+a{
+	text-decoration: none;
+	color: #fdcd0f;
+}
+
+a:hover{
+	color: #e9fd0f;
+}
+
+#body{
+	width: 942px;
+	height: auto;
+	margin: auto;
+}
+
+#menu{
+	float: right;
+	font-size: 19.31px;
+	letter-spacing: -1px;
+	margin-top: 77px;
+	margin-right: 79px;
+}
+
+#menu a:hover{
+	color: #fdcd0f;
+}
+
+#menu li{
+	display: inline;
+}
+
+#menu ul{
+	list-style: none;
+}
+
+.ml{
+	color: #000;
+}
+
+#container{
+	min-height: 700px;
+	padding-top: 220px;
+}
+
+#hearts{
+	background-image: url(heart.png);
+	height: 56px;
+	width: 100%;
+	background-repeat: repeat-x;
+}
+
+#bottom{
+	height: 30px;
+	background-color: #000;
+	width: 100%;
+	height: 76px;
+}
+
+#center{
+	height: 100%;
+	width: 942px;
+	margin: auto;
+}
+
+#copy{
+	background-image: url(copy.png);
+	height: 41px;
+	width: 391px;
+	margin-left: 50px;
+	float: left;
+	margin-top: 19px;
+}
+
+.inputf{
+	background-color: #fff;
+	border: 1px solid #000;
+	height: 25px;
+	width: 230px;
+}
+
+.submitb{
+	border: none;
+	width: 105px;
+	height: 28px;
+	background: none;
+	background-image: url(go.png);
+	cursor: pointer;
+}
+
+#container ol{
+	margin-left: 30px;
+	padding-top: 15px;
+}

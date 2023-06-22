@@ -1,0 +1,3 @@
+Username: pokemon7_image
+Password: EZx0d#NCQFGc
+Database: pokemon7_image_share
