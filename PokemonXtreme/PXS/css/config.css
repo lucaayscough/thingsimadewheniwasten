@@ -1,0 +1,97 @@
+@font-face {
+   font-family: 'agit prop';
+   src:url('/fonts/agitprop.TTF') format('truetype');
+}
+
+@font-face {
+   font-family: 'sf_galaxy';
+   src:url('/fonts/galaxy.ttf') format('truetype');
+}
+
+body {
+   color: #888;
+   word-wrap: break-word;
+   font-family: arial;
+   letter-spacing: 0px;
+   font-size: 14px;
+}
+
+body a {
+   color: #fff;
+   font-size: 14px;
+   text-decoration: none;
+   word-wrap: break-word;
+}
+
+body a:hover {
+   color: #FFB400;
+   text-decoration: underline;
+}
+
+#annunci {
+   margin-top: 45px;
+   margin-right: 9px;
+   float: right;
+   width: 320px;
+   color: #000;
+   height: 172px;
+}
+
+#releaselist {
+   float: left;
+   margin-top: 45px;
+   width: 320px;
+   margin-left: 17px;
+   height: 172px;
+   color: #000;
+}
+
+#releaselist a{
+   color: #444;
+   
+}
+
+#newscasuali {
+   width: 320px;
+   float: left;
+   margin-top: 44px;
+   margin-left: 17px;
+   color: #000;
+   height: 172px;
+}
+
+#menu {
+   margin-left: 13px;
+   width: 268px;
+   font-weight: bold;
+}
+
+#body {
+   margin-left: 32px;
+   width: 686px;
+}
+
+#affiliati {
+   width: 999px;
+   margin-left: 3px;
+   padding-top: 3px;
+}
+
+#menuleft {
+   float: left;
+   width: 134px;
+   margin-bottom: 10px;
+   margin-top: 5px;
+}
+
+#menuright {
+   float: left;
+   width: 134px;
+   margin-bottom: 10px;
+   margin-top: 5px;
+}
+
+.menu_img img {
+   margin-bottom: 5px;
+   margin-top: 10px;
+}

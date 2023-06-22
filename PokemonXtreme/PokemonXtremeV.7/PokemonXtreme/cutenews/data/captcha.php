@@ -1,0 +1,1 @@
+<?php $captcha = array("txt" => 0, "img" => 0); ?>

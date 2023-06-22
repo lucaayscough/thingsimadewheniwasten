@@ -1,0 +1,65 @@
+body {
+     background-color: #000;
+     margin-top: 0;
+     margin-bottom: 0;
+}
+
+#header {
+     margin: auto;
+     background-image: url(/PokemonXtreme/PokemonXtremeV.2/images/backgrounds/header.png);
+     height: 374px;
+     width: 978px;
+     border: #fff 3px solid;
+}
+
+#release {
+     margin: auto;
+     background-image: url(/PokemonXtreme/PokemonXtremeV.2/images/backgrounds/release.png);
+     height: 305px;
+     width: 978px;
+     border-left: #fff 3px solid;
+     border-right: #fff 3px solid;
+     border-bottom: #fff 3px solid;
+}
+
+#mainbox1 {
+     margin: auto;
+     background-image: url(/PokemonXtreme/PokemonXtremeV.2/images/backgrounds/mainbox1.png);
+     width: 978px;
+     height: 23px;
+     border-left: #fff 3px solid;
+     border-right: #fff 3px solid;
+}
+
+#mainbox2 {
+     background-image: url(/PokemonXtreme/PokemonXtremeV.2/images/backgrounds/mainbox2.png);
+     width: 978px;
+     margin: auto;
+     border-left: #fff 3px solid;
+     border-right: #fff 3px solid;
+}
+
+#mainbox3 {
+     background-image: url(/PokemonXtreme/PokemonXtremeV.2/images/backgrounds/mainbox3.png);
+     width: 978px;
+     height: 53px;
+     margin: auto;
+     border-left: #fff 3px solid;
+     border-right: #fff 3px solid;
+     border-bottom: #fff 3px solid;
+}
+
+#menu {
+     width: 250px;
+     margin-left: 4px;
+}
+
+#affiliatibox {
+     background-image: url(/PokemonXtreme/PokemonXtremeV.2/images/backgrounds/affiliatibox.png);
+     margin: auto;
+     height: 300px;
+     width: 978px;
+     border-left: #fff 3px solid;
+     border-right: #fff 3px solid;
+     border-bottom: #fff 3px solid;
+}

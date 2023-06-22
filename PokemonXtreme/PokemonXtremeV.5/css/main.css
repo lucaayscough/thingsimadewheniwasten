@@ -1,0 +1,140 @@
+body {
+   margin: 0;
+   padding: 0;
+   background-color: #333;
+   word-wrap: break-word;
+}
+
+#header {
+   background-image: url(/PXS/images/backgrounds/header.png);
+   width: 1040px;
+   height: 254px;
+   margin: auto;
+   border-bottom: 4px solid #fff;
+   border-right: 4px solid #fff;
+   border-left: 4px solid #fff;
+}
+
+#info_pannel {
+   background-image: url(/PXS/images/backgrounds/login_register.png);
+   width: 1040px;
+   height: 213px;
+   margin: auto;
+   border-bottom: 4px solid #fff;
+   border-right: 4px solid #fff;
+   border-left: 4px solid #fff;
+}
+
+#release_pannel {
+   width: 432px;
+   height: 207px;
+   float: left;
+   margin-top: 1px;
+   margin-left: 3px;
+}
+
+.switch {
+   width: 432px;
+   height: 19px;
+   float: left;
+   font-size: 18px;
+   color: #000;
+   font-family: arial;
+   font-weight: bold;
+}
+
+.switch a {
+   font-size: 18px;
+   color: #000;
+   font-family: arial;
+   font-weight: bold;
+   letter-spacing: -1px;
+   text-decoration: none;
+}
+
+.switch a:hover {
+   color: #333;
+}
+
+.rel_box {
+   margin-top: 4px;
+   width: 432px;
+   height: 184px;
+   float: left;
+   color: #fff;
+   font-family: arial;
+   font-size: 14px;
+}
+
+.random_news_box {
+   margin-top: 4px;
+   width: 432px;
+   height: 184px;
+   float: left;
+   color: #fff;
+   font-family: arial;
+   font-size: 14px;
+   display: none;
+}
+
+.ann_box {
+   margin-top: 4px;
+   width: 432px;
+   height: 184px;
+   float: left;
+   color: #fff;
+   font-family: arial;
+   font-size: 14px;
+   display: none;
+}
+
+.download_streaming {
+   float: right;
+   color: #333;
+}
+
+.download_streaming a {
+   color: #333;
+   font-family: arial;
+   font-size: 14px;
+   text-decoration: none;
+}
+
+.download_streaming a:hover {
+   text-decoration: underline;
+}
+
+#space_bar {
+   background-image: url(/PXS/images/backgrounds/space_bar.png);
+   height: 41px;
+   width: 1040px;
+   margin: auto;
+   border-left: 4px solid #fff;
+   border-right: 4px solid #fff;
+}
+
+#body {
+   margin: auto;
+   background-image: url(/PXS/images/backgrounds/body.png);
+   width: 1020px;
+   height: auto;
+   border-right: 14px solid #fff;
+   border-left: 14px solid #fff;
+}
+
+#end_body {
+   margin: auto;
+   background-image: url(/PXS/images/backgrounds/end_body.png);
+   width: 1020px;
+   height: 15px;
+   border-right: 14px solid #fff;
+}
+
+#menu {
+   margin-left: 4px;
+   width: 241px;
+   color: #000;
+   font-family: arial;
+   font-size: 14px;
+   font-weight: bold;
+}

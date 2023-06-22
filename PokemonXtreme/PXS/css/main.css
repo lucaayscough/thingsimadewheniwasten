@@ -1,0 +1,58 @@
+body {
+   background-color: #222;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   margin-left: 0px;
+}
+
+#header {
+   background-image: url(/images/backgrounds/header.png);
+   height: 350px;
+   width: 1027px;
+   margin: auto;
+   border-left: 4px #fff solid;
+   border-right: 4px #fff solid;
+}
+
+#layoutheme {
+   background-color: #000;
+   border-left: 4px #fff solid;
+   border-right: 4px #fff solid;
+   width: 1027px;
+   margin: auto;
+}
+
+#releasebox {
+   background-image: url(/images/backgrounds/release_box.png);
+   height: 239px;
+   width: 1027px;
+}
+
+#menu_body_p1 {
+   background-image: url(/images/backgrounds/menu_body_p1.png);
+   height: 80px;
+   width: 1027px;
+}
+
+#menu_body_p2 {
+   background-image: url(/images/backgrounds/menu_body_p2.png);
+   width: 1027px;
+}
+
+#menu_body_p3 {
+   background-image: url(/images/backgrounds/menu_body_p3.png);
+   height: 37px;
+   width: 1027px;
+}
+
+#affiliatibox {
+   background-image: url(/images/backgrounds/affiliati.png);
+   height: 250px;
+   width: 1027px;
+}
+
+#footter {
+   background-image: url(/images/backgrounds/footter.png);
+   height: 338px;
+   width: 1027px;
+}

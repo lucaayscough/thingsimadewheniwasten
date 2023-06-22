@@ -1,0 +1,59 @@
+#class, #class2, #class3, #class4, #class5, #class6, #class7 {
+   text-align: center;
+   margin: auto;
+   background-color: #FFA800;
+   width: 550px;
+   border-radius: 15px;
+   -moz-border-radius: 15px;
+   -webkit-border-radius: 15px;
+   height: 35px;
+   margin-bottom: 15px;
+}
+
+.class_name a, .class_name2 a, .class_name3 a, .class_name4 a, .class_name5 a, .class_name6 a, .class_name7 a {
+   font-family: 'agit prop';
+   text-shadow: none;
+   color: #fff;
+   font-size: 25px;
+}
+
+.class_name a:hover, .class_name2 a:hover, .class_name3 a:hover, .class_name4 a:hover, .class_name5 a:hover, .class_name6 a:hover, .class_name7 a:hover  {
+   text-decoration: none;
+   color: #C2C1C0;
+}
+
+#staff_area, #staff_area2, #staff_area3, #staff_area4, #staff_area5, #staff_area6, #staff_area7 {
+   display: none;
+   background-color: #5E6C9A;
+   height: auto;
+   width: 650px;
+   border: 1px solid #fff;
+   margin: auto;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+#area {
+   margin: 15px;
+   color: #000;
+}
+
+.name {
+   font-family: 'sf_galaxy';
+   margin-bottom: 5px;
+   color: #000;
+   font-size: 20px;
+}
+
+.info {
+   padding-left: 5px;
+}
+
+.staffer_info {
+   font-family: 'agit prop';
+   font-size: 18px;
+   color: #D9D9D9;
+}

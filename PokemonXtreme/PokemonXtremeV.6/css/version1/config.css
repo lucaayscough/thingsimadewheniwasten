@@ -1,0 +1,32 @@
+body{
+   word-wrap: break-word;
+   color: #000;
+   font-family: arial;
+   font-size: 14px;
+}
+
+body a{
+   color: #fff;
+   text-decoration: none;
+}
+
+body a:hover{
+   color: #ff9000;
+   border-bottom: dotted 1px #ff9000;
+}
+
+h2{
+   margin: 0px;
+   padding: 0px;
+   color: #000;
+   font-family: 'albert text';
+   font-size: 40px;
+}
+
+h3{
+   margin: 0px;
+   padding: 0px;
+   color: #000;
+   font-family: 'albert text';
+   font-size: 25px;
+}

@@ -1,0 +1,111 @@
+
+
+John Ayscough 
+Creative Director 
+Colourful Bernard 
+07989952192 
+john.ayscough@colourfulbernard.co.uk 
+www.colourfulbernard.co.uk 
+
+
+----- Original Message -----
+From: Customer Care 1&1 Internet Ltd. support@1and1.co.uk
+To: john.ayscough@colourfulbernard.co.uk
+Sent: Tue 21/12/10 11:22 AM
+Subject: Fwd: Your order with 1&1 Internet
+Account Number: 28607410
+Contract Number: 32138697
+
+
+Dear Mr Ayscough,
+
+Thank you for choosing 1&1 - your trusted and reliable domains, web
+hosting, e-commerce and server hosting provider. Please find below,
+important information about your 1&1 package and the 1&1 Control Panel.
+
+==================================
+1&1 Control Panel
+==================================
+The 1&1 Control Panel is your secure work area, from where you can manage
+and configure your package features. Please note that Your 1&1 Control
+Panel will be ready to use one hour after completing the order process.
+
+Log in to your 1&1 Control Panel at https://admin.1and1.co.uk, using your
+Account Number and the password you chose during the order process. Once
+a domain name in your package is fully set up, you may log in with your
+domain name instead of your Account Number.
+
+The Control Panel is divided into several sections, featuring tools with
+which you can set up your website. The Websites & Applications section
+offers useful tools in setting up and building your websites. In the
+Webspace & Access section, you will find tools for uploading and
+downloading files to your webspace. The Marketing section provides you
+with tools, with which you can drive traffic to your website. 
+
+Take your time to explore the Control Panel and take advantage of the
+selected tools to achieve success with your Internet presence.
+
+===================================
+Your Domains 
+===================================
+If you ordered a domain, it will be ready in about 12 hours for limited
+configuration in your 1&1 Control Panel and will be fully available for
+all configuration options in about 24 hours. View the status of your
+domain, by selecting the package containing the domain on the "Package
+Overview" page and on 'Administration' page, click on 'Domains'. 
+
+A default holding page is automatically generated and will be displayed
+for each of your domains. For Linux Hosting packages the file is named
+'index.html' and 'Default.htm' for Microsoft Hosting. If you wish to
+change this page, create and upload a new file with the same name. You
+may also remove it entirely.
+
+Depending on your package plan, at least five free subdomains are
+included in your package. 
+
+===================================
+1&1 Affiliate Programme
+===================================
+
+We reward you for each new customer you refer to us. Just log in to your
+1&1 Control Panel at: http://admin.1and1.co.uk%3Fac%3DOM.UK.UK502K02895T2496a">http://admin.1and1.co.uk?ac=OM.UK.UK502K02895T2496a
+and click 'Affiliate Programme'. Then choose a link or banner to place
+on your website from the Link & Banners section, by simply pasting the
+code provided on your site, newsletters or banner exchanges. You promote
+1&1, we track and report the sales, and then you earn the commission!
+Choose to opt-out? Just stop using or promoting your Affiliate link.
+It's that easy.
+
+Affiliate Terms and Conditions apply.
+
+===================================
+Help & References
+===================================
+
+Get off to a quick and easy start with our Easy Setup Guide:
+
+Linux Hosting: http://admin.1and1.co.uk/downloads/ESG_UK_WebHosting.pdf">http://admin.1and1.co.uk/downloads/ESG_UK_WebHosting.pdf 
+
+Microsoft Hosting: http://admin.1and1.co.uk/downloads/ESG_UK_MSShared.pdf">http://admin.1and1.co.uk/downloads/ESG_UK_MSShared.pdf
+
+Mail and SharePoint:
+http://admin.1and1.co.uk/downloads/ESG_UK_Exchange_SharePoint.pdf">http://admin.1and1.co.uk/downloads/ESG_UK_Exchange_SharePoint.pdf
+
+On the Administration tab of your 1&1 Control Panel, you can access our
+Frequently Asked Questions (FAQ), which represent a comprehensive
+knowledgebase on setting up your website and domain. Links to guided
+Flash Tours are also available on this tab.
+
+Thank you for choosing 1&1.
+
+
+Best regards,
+
+The 1&1 Team
+http://www.1and1.co.uk">www.1and1.co.uk
+
+
+Registered in England and Wales, Company number 3953678 - VAT No GB 752539027 Aquasulis House, 
+10-14 Bath Road, Slough, Berkshire, SL1 3SA, United Kingdom
+
+[0000007534-2]

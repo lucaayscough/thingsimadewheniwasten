@@ -1,0 +1,46 @@
+Host detail
+
+pass: xtAks?fy98
+
+ftp-pass: xtAks?fy
+
+use: lucaayscough
+
+host: pokemonxtreme.com
+
+
+
+Email
+
+email: lucaayscough@pokemonxtreme.com
+
+pass: sneasel98
+
+
+Cutenews
+
+
+us: ItachiDark
+
+pass: sneasel98
+
+Forum
+
+us: ItachiDark
+
+pass: sneasel98
+
+
+MySql Database
+
+User: lucaayscough
+
+Pass: 4xZD$Mp@
+
+Database host: mysql.pokemonxtreme.com
+
+Database name: pokemonxtreme_wptest
+
+Staff page:
+
+Password: as_rea

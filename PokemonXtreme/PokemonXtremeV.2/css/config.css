@@ -1,0 +1,29 @@
+#menuleft {
+    width: 125px;
+    float: left;
+}
+
+#menuright {
+    width: 125px;
+    float: left;
+}
+
+body a {
+    color: #fff;
+    font-family: Arial;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+body {
+    font-weight: bold;
+    color: #999;
+    font-family: helvetica ce;
+    font-size: 15px;
+}

@@ -1,0 +1,40 @@
+Chat Content:
+David K: [1:17:30 PM] Welcome to our real-time support chat. How can I help you today?
+Bob: [1:17:30 PM] Hi how can I delete my account and get back my money?
+David K: [1:17:44 PM] All cancellations need to be done through email.
+
+
+The 2 steps to do this are:
+
+
+1. Cancel AUTO-RENEW function on-line
+2. Email Refunds Dept. to CLOSE ACCOUNT and issue refund 
+
+
+1. Cancel Auto-renew function
+
+
+- Send an email requesting the cancellation to: cancel@justhost.com
+- You will get an email with a link you will need to click on. You will need to follow the steps in that link.
+- THIS IS IMPORTANT: One of the steps is confusing about your account being renewed. This step is to confirm that the account will NOT be renewed.
+- There is also a step on the cancellation form (before step 4) that you need to select a check box and leave a comment to complete the step. This needs to be done or the account will not be canceled. 
+
+
+2. Close the Current Account and request a refund of remaining amount
+
+
+Send a final email to: refunds@justhost.com requesting cancellation of current account and requesting refund. Include in this email:
+
+
+-The steps taken above (so they don't refer you back)
+-Username, password, last four digits of card (for account verification)
+-Method of refunding (if a new card, include the new number) 
+
+
+For more information on Cancellations and Refunds, please refer to our Terms of Service provided below:
+http://www.justhost.com/terms-and-conditions
+
+
+We are sorry to see you go, and hope to see again!
+[1:22:09 PM] Is there anything else I can assist you with today?
+[1:26:31 PM] I apologize, but it seems you've stepped away. If you have additional questions, we are available through phone, chat, and email at all times.

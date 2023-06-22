@@ -1,0 +1,133 @@
+body{
+   background-color: #444;
+   margin: 0px;
+   padding: 0px;
+   word-wrap: break-word;
+}
+
+#header{
+   background-image: url(../images/backgrounds/header.png);
+   height: 289px;
+   width: 1034px;
+   margin: auto;
+}
+
+#main_conteiner{
+   width: 1000px;
+   margin: auto;
+}
+
+#body_container{
+   height: auto;
+   width: 998px;
+   background-color: #fff;
+   border-left: #000 solid 1px;
+   border-right: #000 solid 1px;
+}
+
+#bg_trainer{
+   height: 176px;
+   width: 998px;
+   position: absolute;
+   z-index: 0;
+   background-image: url(../images/backgrounds/bg_trainer.png);
+}
+
+#start_body{
+   height: 16px;
+   width: 998px;
+   background-image: url(../images/backgrounds/start_body.png);
+   position: relative;
+   z-index: 1;
+}
+
+#body{
+   height: auto;
+   width: 998px;
+   background-image: url(../images/backgrounds/body.png);
+   z-index: 2;
+   position: relative;
+}
+
+#menu{
+   margin-left: 11px;
+   width: 229px;
+}
+
+#menu_title{
+   background-image: url(../images/menu/menu.png);
+   width: 231px;
+   height: 74px;
+}
+
+#menu_left{
+   margin-top: 5px;
+   margin-bottom: 10px;
+   float: left;
+   width: 114px;
+}
+
+#menu_right{
+   margin-top: 5px;
+   margin-bottom: 10px;
+   float: left;
+   width: 114px;
+}
+
+#contents{
+   width: 737px;
+   margin-left: 20px;
+}
+
+#boxes{
+   height: 165px;
+}
+
+#release_box{
+   width: 433px;
+   height: 165px;
+   background-color: #d8f6ff;
+   float: right;
+   margin-right: 12px;
+   margin-top: -4px;
+   border: 1px solid #000;
+   background-image: url(../images/release/release_box.png);
+   background-repeat: no-repeat;
+}
+
+#login_box{
+   width: 224px;
+   height: 165px;
+   background-color: #d8f6ff;
+   float: right;
+   margin-right: 7px;
+   margin-top: -4px;
+   border: 1px solid #000;
+   background-image: url(../images/users/login/login_box.png);
+   background-repeat: no-repeat;
+}
+
+#end_body{
+   height: 14px;
+   width: 998px;
+   background-image: url(../images/backgrounds/end_body.png);
+   z-index: 3;
+   position: relative;
+}
+
+#copyright_box{
+   background-image: url(../images/backgrounds/copyrights.png);
+   width: 998px;
+   height: 194px;
+   border-bottom: 1px solid #000;
+   margin-top: -35px;
+}
+
+#up{
+   background-image: url(../images/backgrounds/up.png);
+   height: 60px;
+   width: 62px;
+   float: left;
+   margin-top: 115px;
+   margin-left: 30px;
+}

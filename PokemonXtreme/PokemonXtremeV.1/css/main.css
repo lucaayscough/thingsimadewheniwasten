@@ -1,0 +1,234 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+* {
+	margin:0;
+	padding:0;
+}
+
+
+body {
+	background-image: url(../images/backgrounds/Background.jpg);
+	background-position: center;
+	font-family: arial;
+	font-style: italic;
+	font-size: 20px;
+        text-shadow: 2px  2px 4px #FFF, -2px -2px 4px #FFF;
+}
+
+#header {
+        background-image: url(../images/backgrounds/logo.png);
+        height: 423px; 
+        width: 1109px;
+        border-top: 6px solid #000;
+        border-left : 6px solid #000;
+        border-right: 6px solid #000;
+	margin:auto;
+}
+
+#release {
+        background-image: url(../images/backgrounds/release.png);
+        height: 350px; 
+        width: 1109px;
+        border-top: 6px solid #000;
+        border-left : 6px solid #000;
+        border-right: 6px solid #000;
+	margin:auto;
+}
+
+#release a {
+    font-size:18px;
+    text-decoration: none;
+    letter-spacing: -1px;   
+    color: #FFF;
+    text-decoration: none;
+    text-shadow: 2px  2px 4px #777, -2px -2px 4px #777;       
+}
+
+
+#release a:hover {
+     color: #FFB400;
+     text-decoration: underline;      
+}
+
+#tabella_release {
+        background-image: url(../images/backgrounds/tabella_release.png);
+        height:227px;
+        width:578px;
+        margin-top:118px;
+        margin-left:7px;
+}
+
+#mainbox {
+	width: 1109px;
+	height: 2100px;
+	margin:auto;
+        border-top: 6px solid #000;
+	border-left: 6px solid #000;
+        border-bottom: 6px solid #000;
+        border-right: 6px solid #000;
+	background-position:right;
+}
+
+
+/*  menubox and all its internal elements  */
+
+#semenubox {
+        background-image: url(../images/backgrounds/men.png);
+        height:2100px;
+	width:263px;
+        float:left;
+        border-right: 6px solid #000;
+}
+
+#menbox {
+	float:left;
+	height:750px;
+	width:263px;
+	background-image: url(../images/backgrounds/men.png);
+	background-repeat:repeat-y;
+	border-right: 6px solid #000;
+}
+
+#affilibox {
+        float:left;
+	height:500px;
+	width:263px;
+	background-image: url(../images/backgrounds/men.png);
+	background-repeat:repeat-y;
+	border-right: 6px solid #000;
+}
+
+#copyrbox {
+        float:left;
+	height:250px;
+	width:263px;
+	background-image: url(../images/backgrounds/men.png);
+	background-repeat:repeat-y;
+	border-right: 6px solid #000;
+}
+
+#altbox {
+        float:left;
+	height:604px;
+	width:263px;
+	background-image: url(../images/backgrounds/men.png);
+	background-repeat:repeat-y;
+	border-right: 6px solid #000;
+}
+
+
+#menu {
+	width:100%;
+}
+
+#firstmenuleft, #secondmenuleft, #thirdmenuleft, #fourthmenuleft{
+	float:left;
+	width:40%;
+	padding-left:8px;
+}
+
+#firstmenuright, #secondmenuright, #thirdmenuright, #fourthmenuright {
+	float:right;
+	width:55%;
+}
+
+/*  contentbox and all its internal elements  */
+
+#contentbox {
+	float:right;
+	height:2100px;
+	width:810px;
+       	padding: 0 15px 0px 15px;
+	font-size: 20px;   
+	font-weight: bold;
+        background-image: url(../images/backgrounds/sheet.png)
+}
+
+/*  general elements  */
+
+#firstmenuleft a, #secondmenuleft a, #thirdmenuleft a, #fourthmenuleft a, #firstmenuright a, #secondmenuright a, #thirdmenuright a, #fourthmenuright a, #copyright a, #altro a, #contentbox a {
+    text-decoration: none;
+    letter-spacing: -1px;   
+    font-weight: bold;
+    color: #FFF;
+    text-decoration: none;
+    text-shadow: 2px  2px 4px #777, -2px -2px 4px #777;
+}
+
+#firstmenuleft a:hover, #secondmenuleft a:hover, #thirdmenuleft a:hover, #fourthmenuleft a:hover, #firstmenuright a:hover, #secondmenuright a:hover, #thirdmenuright a:hover, #fourthmenuright a:hover, #copyright a:hover, #altro a:hover, #contentbox a:hover {
+     color: #FFB400;
+     text-decoration: underline;
+} 
+
+.clear {
+	clear:both;
+}
+
+#copyright, #altro {
+	font-size: 20px;  
+	font-style: italic;  
+	font-weight: bold;
+	padding:6px;
+}
+
+/*    end general elements    */
+
+/*    menu signs     */
+
+#prtext {
+     background-image: url(../images/menu/menu.png);
+     height: 70px;
+     width: 262px;
+     margin: auto;
+}
+
+#sectext {
+     background-image: url(../images/menu/general.png);
+     height: 45px;
+     width: 263px;
+     margin: auto;
+}
+
+#thtext {
+     background-image: url(../images/menu/multimedia.png);
+     height: 61px;
+     width: 262px;
+     margin: auto;
+}
+
+#fotext {
+     background-image: url(../images/menu/informazioni.png);
+     height: 61px;
+     width: 262px;
+     margin: auto;
+}
+
+#fitext {
+     background-image: url(../images/menu/extra.png);
+     height: 61px;
+     width: 262px;
+     margin: auto;
+}
+
+#sixtext {
+     background-image: url(../images/menu/affiliati.png);
+     height: 80px;
+     width: 262px;
+     margin: auto;
+}
+
+#setext {
+     background-image: url(../images/menu/copiright.png);
+     height: 44px;
+     width: 262px;
+     margin: auto;
+}
+
+#eitext {
+     background-image: url(../images/menu/altro.png);
+     height: 61px;
+     width: 262px;
+     margin: auto;
+}
