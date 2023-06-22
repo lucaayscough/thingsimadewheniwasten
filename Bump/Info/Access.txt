@@ -1,0 +1,9 @@
+FTP:
+	Username: john@gallery-bump.co.uk
+	Password: galleryBump2011
+
+Database:
+	Username: ugal_624153_0001
+	Password: zM-2=4Jj
+	Host: cust-mysql-123-03
+	Database Name: gallerybumpcouk_624153_db1

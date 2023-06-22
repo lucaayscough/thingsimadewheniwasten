@@ -1,0 +1,43 @@
+.exhibitioncon{
+	overflow: auto;
+}
+
+#mutus-image{
+	float: left;
+	margin-top: 75px;
+}
+
+#mutus-text{
+	width: 400px;
+	float: right;
+	color: #575656;
+	font-family: arial;
+	font-size: 12px;
+	margin-top: 75px;
+}
+
+#chad-image{
+	float: left;
+}
+
+#chad-text{
+	width: 400px;
+	float: right;
+	color: #575656;
+	font-family: arial;
+	font-size: 12px;
+	margin-top: 60px;
+}
+
+#chad-art{
+	margin-bottom: 75px;
+}
+
+h2{
+	margin-bottom: 5px;
+}
+
+#border-spacer{
+	border-bottom: 1px solid #c9c9c9;
+	width: 1000px;
+}
