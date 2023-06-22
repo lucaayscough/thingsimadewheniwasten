@@ -1,0 +1,65 @@
+ul{
+	font-style: italic;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
+#endReg{
+	margin-bottom: 20px;
+}
+
+li{
+	margin-top: 1px;
+}
+
+.labelRegister{
+	font-family: helvetica_inserat_lt;
+	font-size: 16px;
+	margin-top: 10px;
+	color: #000;
+}
+
+.registerTextFieds{
+	border: 1px solid #b8b8b8;
+	height: 23px;
+	width: 170px;
+	outline: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	margin-top: 5px;
+	background-color: #f3f3f3;
+}
+
+.registerTextFieds:hover;{
+	border: 10px solid #b8b8b8;
+}
+
+#register_labels{
+	float: left;
+	padding-right: 50px;
+}
+
+#register_fields{
+	float: left;
+}
+
+#register_user{
+	overflow: auto;
+}
+
+#submit_register{
+	border: 1px solid #b8b8b8;
+	background-color: #f3f3f3;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	cursor: pointer;
+	color: #555555;
+	height: 30px;
+	width: 70px;
+	font-size: 14px;
+	font-family: helvetica_inserat_lt;
+	margin-top: 25px;
+}

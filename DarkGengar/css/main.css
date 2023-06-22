@@ -1,0 +1,59 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+}
+
+body{
+	background-color: #ff1c1c;
+}
+
+#header{
+	background-image: url(../images/layout/header.png);
+	height: 153px;
+	width: 900px;
+	margin: auto;
+}
+
+#menu_rapido{
+	background-image: url(../images/layout/menu_rapido.png);
+	height: 60px;
+	width: 100%;
+}
+
+#center{
+	margin: auto;
+	width: 900px;
+	padding-top: 10px;
+}
+
+#link1{
+	height: 41px;
+	width: 130px;
+	background-image: url(../images/layout/home.png);
+	float: left;
+}
+
+#link2{
+	height: 41px;
+	width: 180px;
+	background-image: url(../images/layout/grafica.png);
+	float: left;
+}
+
+#link3{
+	height: 41px;
+	width: 180px;
+	background-image: url(../images/layout/affiliati.png);
+	float: left;
+}
+
+#wrapper{
+	background-color: #fff;
+	height: auto;
+	border-left: 4px solid #000;
+	border-right: 4px solid #000;
+	border-bottom: 4px solid #000;
+	width: 900px;
+	margin: auto;
+}

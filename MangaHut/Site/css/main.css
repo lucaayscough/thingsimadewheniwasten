@@ -1,0 +1,159 @@
+*{
+	border: none;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+html, body{
+	background-color: #e5e5e5;
+	font-family: arial;
+	font-size: 14px;
+	color: #000;
+	font-weight: normal;
+	font-style: normal;
+	word-wrap: break-word;
+}
+
+h1{
+	font-family: 'arial black';
+	color: #000;
+	font-size: 36px;
+	letter-spacing: -2px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#nav{
+	height: 51px;
+	min-width: 1000px;
+	width: 100%;
+	background-image: url(../images/layout/nav_bar.png);
+}
+
+#center_nav{
+	width: 1000px;
+	margin: auto;
+}
+
+#logo{
+	margin-top: 9px;
+	float: left;
+	margin-left: 15px;
+}
+
+#heads{
+	height: 51px;
+	width: 159px;
+	background-image: url(../images/layout/heads.png);
+	margin-left: 55px;
+	float: left;
+}
+
+#nav_menu{
+	float: right;
+	margin-right: 10px;
+	margin-top: 13px;
+}
+
+#nav_menu a{
+	font-family: helvetica_inserat_lt;
+	font-size: 21px;
+	color: #fff;
+	text-decoration: none;
+}
+
+#nav_menu a:hover{
+	color: #b8b8b8;
+}
+
+#container{
+	background-color: #fff;
+	width: 980px;
+	height: auto;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin: auto;
+	margin-top: 30px;
+	padding: 10px;
+	padding-bottom: 70px;
+	font-size: 13px;
+	color: #333;
+}
+
+
+#login_box{
+	float: left;
+	width: 201px;
+	height: 201px;
+	margin-right: 10px;
+	background-image: url(../images/account/login_form.png);
+}
+
+#username_field{
+	background-color: transparent;
+	margin-top: 23px;
+	margin-left: 12px;
+	height: 35px;
+	width: 173px;
+	outline: none;
+	font-size: 14px;
+}
+
+#password_field{
+	background-color: transparent;
+	margin-top: 17px;
+	margin-left: 12px;
+	height: 35px;
+	width: 173px;
+	font-size: 14px;
+	outline: none;
+}
+
+#login_button{
+	height: 36px;
+	width: 74px;
+	background-color: transparent;
+	cursor: pointer;
+	margin-top: 24px;
+	margin-left: 4px;
+}
+
+#release_tabs{
+	overflow: auto;
+}
+
+#news_box{
+	float: left;
+
+}
+
+#release_box{
+	background-image: url(../images/layout/release_box.png);
+	width: 369px;
+	height: 196px;
+	float: right;
+	padding-top: 5px;
+	padding-left: 10px;
+}
+
+#release_box a{
+	color: #fff;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+#release_box a:hover{
+	text-decoration: underline;
+}
+
+#footer{
+	height: 60px;
+	width: 1000px;
+	margin: auto;
+	background-image: url(../images/layout/footer.png);
+}
