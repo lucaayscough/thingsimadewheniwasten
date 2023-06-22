@@ -1,0 +1,38 @@
+.stafferInfo{
+	color: #555;
+	font-size: 13px;
+	width: 400px;
+	padding: 2px;
+}
+
+.stafferInfo:hover{
+	background-color: #d15f5f;
+	color: #700000;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.stafferInfo:hover a{
+	color: #700000;
+}
+
+h1{
+	font-size: 26px;
+	font-family: whitneyblack;
+	padding-bottom: 4px;
+}
+
+.staff-info-box{
+	 overflow: auto;
+	background-color: #dcdcdc;
+	padding: 5px;
+	border: 1px solid #c5c5c5;
+	margin-bottom: 30px;
+}
+
+.avatar-box{
+	width: 170px;
+	float: left;
+	padding-right: 5px;
+}

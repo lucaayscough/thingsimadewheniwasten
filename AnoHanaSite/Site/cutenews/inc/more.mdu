@@ -1,0 +1,525 @@
+<?php
+/* Additional features for UTF-8 CuteNews 9
+ (c) 2010 KoRn19.ch */
+
+// Add a user name between the '' below if you only want to grant ONE single user access to this page
+// Not case sensitive
+$name = '';
+/////////////
+
+if($member_db[1] != 1){ msg('error', 'Access Denied', 'You don\'t have permission for this section'); }
+
+if(isset($name) && strlen(trim($name)) > 0){
+	if(strtolower($name) != strtolower($member_db[2])){
+		msg('error', 'Access Denied', 'You do not have the required rights to access this page.', '?mod=options');
+	}
+}
+
+// Functions
+function smart_chmod($file){
+	global $perm;
+	if(is_writable($file)){ return '(unchanged)'; }
+
+	$perm = substr(sprintf('%o', fileperms($file)), -4);
+	@chmod($file, 0755);
+	if(is_writable($file)){ return '755'; }
+
+	@chmod($file, 0777);
+	if(is_writable($file)){ return '777'; }
+
+	@chmod($file, $perm);
+	return $perm.' (failed?)';
+}
+
+function smart_display($bytes){
+	if(round($bytes/1000) >= 1){
+		if(round($bytes/1000000) >= 1){
+			return round($bytes/1000000, 2).' MB';
+		}
+		return round($bytes/1000, 2).' KB';
+	}
+	return $bytes.' bytes';
+}
+
+
+$caz = 0;
+if($do == 'stats'){
+	/* **********
+	* Stats
+	*********** */
+	echoheader('options', 'More: Advanced Stats');
+	echo '<b>1: Config database files</b><br><br><table cellspacing=3><tr><td align=right>File &nbsp;</td><td>Status</td><td>Size</td></tr>';
+	$dbs = array('auto_archive.db', 'cat.num', 'captcha', 'category.db', 'config', 'flood.db', 'ipban.db', 'log.db', 'loginban.db', 'rss_config', 'users.db');
+	$mistake = FALSE; $tot = 0;
+	foreach($dbs as $file){
+		$file .= '.php';
+		$fyle = './data/'.$file;
+		if(file_exists($fyle)){
+			if(is_writable($fyle)){
+				$write = '<font color=green>Writable</font>';
+			}
+			else{	$mistake = TRUE;
+				$write = '<font color=red>Not writable!</font>
+					<br><a href="?mod=more&amp;do=repair&amp;f='.$file.'" style="font-size: 8pt">Try repairing?</a>';
+			}
+		}
+		else{ $write = '<font color=red>File does not exist!</font>'; $mistake = TRUE; }
+		$size = @filesize($fyle); $tot += $size;
+		
+		echo '<tr><td align=right>'.$file.'</td><td align=center>'.$write.'</td><td>'.smart_display($size).'</td></tr>';
+	}
+	echo '<tr><td align=right><b>Total:</b> &nbsp; </td><td> </td><td>'.smart_display($tot).'</td></tr></table>';
+
+	echo '<br><br><br><b>2: News database files</b><br><br><table cellspacing=3><tr><td align=right>File &nbsp; </td><td>Status</td><td><acronym title="Amount of news articles or comments">Items</acronym></td><td>Size</td></tr>';
+	$files = array('news.txt', 'comments.txt', 'postponed_news.txt', 'unapproved_news.txt');
+	$tot = 0; $huge_files = FALSE;
+	foreach($files as $file){
+		$fyle = './data/'.$file;
+		if(file_exists($fyle)){
+			if(is_writable($fyle)){
+				$write = '<font color=green>Writable</font>';
+			}
+			else{	$write = '<font color=red>Not writable!</font>
+					<br><a href="?mod=more&amp;do=repair&amp;f='.$file.'" style="font-size: 8pt">Try repairing?</a>';
+				$mistake = TRUE;
+			}
+		}
+		else{ $write = '<font color=red>File does not exist!</font>'; $mistake = TRUE; }
+
+		$size = @filesize($fyle); $tot += $size;
+
+		$combien = 0;
+		if($file == 'comments.txt'){
+			$content = file($fyle);
+			foreach($content as $line){
+				if(trim($line) == ''){ continue; }
+				$line = preg_replace('/^[0-9]{7,}\|\>\|(.*?)/', '\\1', $line);
+				$line = explode('||', $line);
+				foreach($line as $com){
+					if(trim($com) != ''){ $combien++; }
+				}
+			}
+			$com_tot = $combien;
+		}
+		else{
+			$content = file($fyle);
+			foreach($content as $line){
+				if(trim($line) != ''){ $combien++; }
+			}
+			if($file == 'news.txt'){ $news_tot = $combien; }
+		}
+		echo '<tr><td align=right>'.$file.'</td><td align=center>'.$write.'</td><td align=center>'.$combien.'</td><td>'.smart_display($size).'</td></tr>';
+	}
+
+	if($huge_files){
+		echo '<tr><td colspan="4" style="border-left: 1px dotted #f00"; padding: 2px><b style="color: red">Warning!</b> UTF-8 CuteNews has detected that there are<br>
+files which are bigger than 5 MB! You may lose your data
+<br>if you have very large files (the limit depends from 
+<br>server to server). Please remember to make backups 
+<br>of your /data/ folder regularly. Archiving a fair amount 
+<br>of news articles (not all if you have a HUGE database 
+<br>file) will help you avoid data loss!</td></tr>';
+	}
+	if($news_tot == 0){ $news_tot = 1; }
+
+	echo '<tr><td align=right><b>Total:</b> &nbsp; </td><td></td><td></td><td>'.smart_display($tot).'</td></tr>
+<tr><td colspan="4"> &raquo; Average comments per article: '.round($com_tot / $news_tot, 1).'</td></tr></table>
+<br><br><br><b>3: Template &amp; language files</b><br><br><table cellspacing=3><tr><td align=right>File &nbsp; </td><td>Status</td><td>Size</td></tr>';
+
+	$tot = 0;
+	if($dh = opendir('./data/')){
+		while(($file = readdir($dh)) !== false){
+			$fyle = './data/'.$file;
+			$ext = preg_replace('/^.*\.([a-z]{3})$/i', '\\1', $file);
+			if(strtolower($ext) == 'clf' || strtolower($ext) == 'tpl'){
+				if(is_writable($fyle)){ $write = '<font color=green>Writable</font>'; }
+				else{ $write = '<font color=red>Not writable!</font>
+					<br><a href="?mod=more&amp;do=repair&amp;f='.$file.'" style="font-size: 8pt">Try repairing?</a>';
+					$mistake = TRUE;
+				}
+				$size = filesize($fyle); $tot += $size;
+
+				echo '<tr><td align=right>'.preg_replace('/^(.*\.)(clf|tpl)$/i', '\\1', $file);
+				if($ext == 'clf'){ echo '<acronym title="CuteNews Language File">clf</acronym>'; }
+				else{ echo '<acronym title="CuteNews Template File">tpl</acronym>'; }
+				echo '</td><td align=center>'.$write.'</td><td>'.smart_display($size).'</td></tr>';
+			}
+		}
+	}
+	else{
+		echo '<tr><td colspan=3>Failed opening <b>/data/</b>!</td></tr>';
+	}
+	closedir($dh);
+
+	echo '<tr><td align=right><b>Total: &nbsp; </b></td><td></td><td>'.smart_display($tot).'</td></tr></table>';
+	
+	echo '<br><br><b>4: Summary</b><br><br>';
+	if($mistake){
+		echo '<b>!</b> UTF-8 CuteNews has detected that some files either do not exist or aren\'t writable! Please fix these errors to 
+ensure that UTF-8 CuteNews can function properly.';
+	}
+	else{
+		echo '<span style="color: green">&#10003; Everything seems to be OK</span>';
+	}
+}
+elseif($do == 'repair'){
+/* *******
+* Repair
+******** */
+	if(file_exists('./data/'.$_GET['f']) && strpos($_GET['f'], '/') === false){
+		echoheader('options', 'Repair file');
+		$file = $_GET['f'];
+		if(is_writable('./data/'.$file)){
+			echo 'No repairing necessary! The file <b>'.htmlentities($file).'</b> is writable.
+<br>&raquo; <a href="?mod=more">Main</a>';
+		}
+		else{
+			echo 'Note: CuteNews cannot repair a file\'s CHMOD if you are using a Windows server! Windows servers do not support 
+CHMOD; the permissions are managed through another way. Please contact your host if you are on Windows. Running this might produce error messages, 
+but nothing will be damaged.';
+
+		$new = smart_chmod('./data/'.$file);
+		echo '<hr>The file <b>'.htmlentities($file).'</b>\'s CHMOD value was <b>'.$perm.'</b>. It has now been set to '.$new.'.
+<br>Automatic check if file is writable: ';
+		clearstatcache(); 
+		if(is_writable('./data/'.$file)){ echo '<font color="green">Successful :)</font>'; }
+		else{ echo '<font color="red">Unsuccessful</font>. Please repair this problem manually.'; }
+
+		}
+	}
+	else{
+		msg('error', 'Error', 'File to repair does not exist.');
+	}
+}
+elseif($do == 'spam'){
+/* *********
+* Spam prevention
+********** */
+	if($action == 'update'){
+		if(!is_writable('./data/captcha.php')){
+			msg('error', 'Error', './data/captcha.php is not writable.', '?mod=more&amp;do=stats');
+		}
+
+		$captcha = array();
+		if(isset($_POST['txt'])){ $captcha['txt'] = 1; } else{ $captcha['txt'] = 0; }
+		if(isset($_POST['img'])){ $captcha['img'] = 1; } else{ $captcha['img'] = 0; }
+		if(isset($_POST['txtsess'])){ $captcha['txtsess'] = 1; } else{ $captcha['txtsess'] = 0; }
+
+		$open = fopen('./data/captcha.php', 'w');
+		fwrite($open, '<?php $captcha = '.var_export($captcha, true).'; ?>');
+		fclose($open);
+
+		echoheader('info', 'Captcha settings updated');
+		echo 'The captcha settings have been updated.<br>';
+		if($captcha['img']){ echo '<br>&raquo; <a href="?do=spamimg&amp;mod=more">Image captcha integration</a> (important)'; }
+		if($captcha['txt']){ echo '<br>&raquo; <a href="?do=spamtxt&amp;mod=more">Text captcha integration</a>'; }
+
+		echo '<br><br><a href="?mod=more&amp;do=spam">Go back</a>';
+		echofooter(); exit;
+	}
+	else{
+		echoheader('options', 'Spam prevention options');
+		echo 'UTF-8 CuteNews has two built-in spam prevention techniques: an image-based one (requires GD support) and a text-based one. Enable one of 
+		them if you have a lot of spam comments.
+		<br><b>Important</b>: Please follow the instructions of the integration instructions when you enable a captcha.';
+
+		unset($captcha);
+		if(!file_exists('./data/captcha.php')){
+			echo '<br><br><b>Warning:</b> ./data/captcha.php does not exist. Trying to create...';
+
+			$open = fopen('./data/captcha.php', 'w');
+			@fwrite($open, '');
+			@fclose($open);
+
+			clearstatcache();
+			if(file_exists('./data/captcha.php')){
+				echo '<br>File created successfully! Please <a href="?mod=more&amp;do=stats">check if it\'s writable</a>.<br>';
+			}
+			else{
+				echo '<br>Failed. Please create the file <b>./data/captcha.php</b> manually.'; echofooter(); exit;
+			}
+		}
+
+		require('./data/captcha.php');
+		$captcha_txt = '';
+		$captcha_img = ''; $captcha_txtsess = '';
+		if($captcha['txt']){ $captcha_txt = ' checked="checked"'; }
+		if($captcha['img']){ $captcha_img = ' checked="checked"'; }
+		if($captcha['txtsess']){ $captcha_txtsess = ' checked="checked"'; }
+
+		echo '<br><br><form action="'.$PHP_SELF.'" method="post">
+<input type="hidden" name="mod" value="more">
+<input type="hidden" name="do" value="spam">
+<input type="hidden" name="action" value="update">
+<table>
+ <tr><td style="padding: 5px"><b>Image captcha</b>
+<br>Requires GD support.
+<br>Auto-check: ';
+if(extension_loaded('gd') && function_exists('gd_info')){
+	echo 'Looks like<br>GD is supported. <span style="color: green">&#10003;</span>';
+}
+else{
+	echo 'GD probably<br>not supported. <span style="color: red">&#10005;</span>';
+}
+
+echo '</td>
+ <td style="padding: 5px"><input type="checkbox" name="img" value="1"'.$captcha_img.'></td>
+ <td style="width: 320px; padding: 4px">The image captcha displays an image with letters which the user has to retype.';
+if($captcha['img']){
+	echo '<br>&raquo; <a href="?mod=more&amp;do=spamimg">Integration instructions</a> (important!)';
+	if(!file_exists('./captcha/')){
+		echo '</td></tr><tr><td colspan="3"><div style="border-left: 1px solid #f00; padding: 2px"><b>Warning</b>: The image captcha is not working yet. You must download the /captcha/ folder. Please follow the 
+<a href="?mod=more&amp;do=spamimg">image captcha integration instructions</a>.</div>';
+	}
+
+ }
+echo '</td>
+ </tr>
+ <tr><td colspan="3"><hr></td></tr>
+ <tr>
+  <td style="padding: 5px"><b>Text captcha</b></td>
+  <td style="padding: 5px"><input type="checkbox" name="txt" value="1"'.$captcha_txt.'></td>
+  <td style="padding: 4px">This spam prevention method displays letters that have to be typed into a field. Integration is easier, but this method is less effective.';
+if($captcha['txt']){ echo '<br>&raquo; <a href="?mod=more&amp;do=spamtxt">Integration instructions</a>'; }
+echo '<br /><input type="checkbox" value="1" name="txtsess"'.$captcha_txtsess.'> Use sessions (recommended)</td>
+ </tr>
+ <tr>
+  <td colspan="2"> &nbsp; &nbsp; <input type="submit" value="Update"></td>
+ </tr>
+</table>
+</form>';
+
+
+	}
+}
+elseif($do == 'spamimg'){
+/* ******
+* IMG captcha integration
+******* */
+	echoheader('options', 'Image captcha integration');
+
+	echo '<ol><li>Download the /captcha/ folder from <a href="http://korn19.ch/coding/utf8-cutenews/image-captcha.php">http://korn19.ch/coding/utf8-cutenews/image-captcha.php</a>.</li>
+<li>Extract the .zip file and upload the /captcha/ folder in your UTF-8 CuteNews folder. (e.g. /cutenews/captcha/).</li>
+<li>In every page in which you include CuteNews, add the following code at the <b>very</b> top (nothing may be before this!):
+<hr><i>&lt;?php
+<br>require_once(\'<b>./captcha/</b>php-captcha.inc.php\');
+<br>?&gt;</i><hr>
+You might have to change <b>the path</b> so that it looks for the file at the right place.</li>
+<li>Add the {captcha-img} tag to the <i>Add Comments Form</i> in your <a href="?mod=options&amp;action=templates">templates</a>. This will show the captcha image and text field.</li>
+<li>Write a test comment to see if everything worked.</li>
+</ol>
+<br>This captcha is made by <a href="http://democute.de.funpic.de/cute/example2.php?subaction=showfull&amp;id=1141140525&amp;ucat=6">FI-DD</a>. Big thanks!';
+
+}
+elseif($do == 'spamtxt'){
+/* *******
+* TXT captcha integration
+******** */
+	echoheader('options', 'Text captcha integration');
+	@include('./data/captcha.php');
+	if(!$captcha['txt']){
+		echo '<b>Warning:</b> You have not enabled the text captcha in the <a href="?mod=spam&amp;do=spam">captcha module</a>.<br><br>';
+	}
+
+	echo 'You will need to add additional tags to the <i>Add Comments Form</i> in your <a href="?mod=options&amp;action=templates">templates</a>.
+<br>
+<br><b>{captcha-txt}</b> displays the text the user has to enter.
+<br><b>{captcha-txt-input}</b> displays the text field for the user to enter the text.
+<br>You can create the text field manually by adding the following code:
+<br>&lt;input type="text" name="txtcaptcha" /&gt;
+<br>
+<br>Your template should then look something like this:
+<hr>
+...
+<br>Please enter the word <b>{captcha-txt}</b>: <b>{captcha-txt-input}</b>.
+<br>...
+<hr>
+<br>If you are using sessions - you currently are'; if(!$captcha['txtsess']){ echo ' <b>not</b>'; } 
+echo ' - you will have to add the following code at the very top of each file in which CuteNews is displayed:
+<hr>&lt;?php
+session_start();
+?&gt;<hr>
+<br>
+<br>This captcha is easy and can easily be solved automatically. If you are still having spam problems, try the image captcha or take a look at the
+<a href="http://cutephp.com/forum/" target="_blank">CutePHP forums</a> where more advanced captchas are discussed.';
+
+}
+elseif($do == 'loginban'){
+/* *********
+* Login ban
+********** */
+	unset($loginban);
+
+	// user wants to reset an IP record
+	if(isset($_GET['reset']) && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_GET['reset'])){
+		require('./data/loginban.db.php');
+		if(isset($loginban[$_GET['reset']])){
+			unset($loginban[$_GET['reset']]);
+			unset($loginban_stamp[$_GET['reset']]);
+
+			$open = fopen('./data/loginban.db.php', 'w');
+			fwrite($open, '<?php $loginban = '.var_export($loginban, true).'; $loginban_stamp = '.var_export($loginban_stamp, true).'; ?>');
+			fclose($open);
+
+			utf8_hardlog($member_db[2], 'loginban_del['.$_GET['reset'].']');
+			msg('info', 'Record Removed', 'The IP address <b>'.$_GET['reset'].'</b> has been removed from the database.', '?mod=more&amp;do=loginban');
+		}
+	}
+		
+
+	echoheader('users', 'Login bans');
+	echo 'With UTF-8 CuteNews, you can set the number of login attempts before an IP address gets banned (<a href="?mod=options&amp;action=syscon">here</a>).
+		The table below shows who got banned and gives you the option to unban them.<br>';
+
+	if($config_login_ban <= 0){
+		echo '<br>You have disabled the option.';
+		echofooter(); exit;
+	}
+
+	require('./data/loginban.db.php');
+	if(!isset($loginban) || !is_array($loginban) || count($loginban) == 0){
+		echo '<br><br>No false logins have been recorded recently.';
+	}
+	else{
+		echo '<table style="width: 90%; margin: 10px auto">
+<tr><th>IP Address</th><th>Bad login attempts</th><th>Status</th><th>Last recorded</th><th>Reset?</th></tr>';
+		asort($loginban);
+		$loginban = array_reverse($loginban);
+		foreach($loginban as $ip => $count){
+			if($ip == $_SERVER['REMOTE_ADDR']){
+				echo '<tr><td colspan="5" style="background-color: #ff9">The line below is your IP ('.$_SERVER['REMOTE_ADDR'].')</td></tr>';
+			}
+			echo '<tr><td><a href="http://network-tools.com/default.asp?prog=express&host='.$ip.'">'.$ip.'</a></td><td align=center>'.$count.'</td>';
+			if($config_login_ban - $count > 0){
+				echo '<td>'.($config_login_ban - $count).' attempts left</td>';
+			}
+			else{
+				echo '<td><b>Banned</b></td>';
+			}
+			echo '<td>'.date('d M Y, H:i', (int) $loginban_stamp[$ip]).'</td><td><a href="?mod=more&amp;do=loginban&amp;reset='.$ip.'">Reset</a></td></tr>';
+		}
+		echo '</table>';
+	}
+} 
+elseif($do == 'hardlog'){
+/* ******
+* Hardlog
+******** */
+	echoheader('options', 'UTF-8 CuteNews Hardlog');
+
+	$name_filter = 0; $reverse = 0;
+	if(trim($byip) != ''){
+		if($byip == 'CN' || $byip == '!CN'){ $byip = str_replace('CN', 'cnsys', $byip); }
+		$byip = trim(strtolower($byip)); $name_filter = 1;
+		if($byip[0] == '!'){ $reverse = 1; }
+	}
+	else{ $byip = ''; }
+
+	$checked = '';
+	if($errors){ $checked = ' checked="checked"'; }
+
+	$options = '<option>Select a filter</option><option value="err">Errors</option><option value="del">Deleted</option><option value="edit">Edited</option><option value="new">Created</option>';
+	if(preg_match('/^(err|del|edit|new)$/', $byaction)){
+		$options = preg_replace('/('.$byaction.')/', $byaction.'" selected="selected', $options);
+	}
+	else{ $byaction = false; }
+
+
+// show_smart function. Contact me 4 code w/ whitespace
+function show_smart($in){ if(isset($_GET['out'])){ return $in; } $out = $in; $times = 1; if(preg_match('/.*\{[0-9]{1,2}x\}$/', $in)){ $times = preg_replace('/(.*)\{([0-9]{1,2})x\}$/', '\\2', $in); $out = preg_replace('/(.*)\{(.*?)\}$/', '\\1', $in); $in = $out; } $array = array( 'archive_poof\[(.*)\]' => 'Unarchieved articles of archive \\1', 'archive_new\[(.*)\]' => 'Created new archive: <a href="?mod=tools&amp;action=archive">\\1</a>', 'archive_del\[(.*)\]' => 'Deleted archive \\1', 'archive_del_err\[(.*)\]' => 'Deleted archive \\1 with errors', 'article_new_unapproved\[(.*)\]\[([0-9]{7,13})\]' => 'Posted new article (\\1); <a href="?mod=editnews&amp;source=unapproved&amp;action=list">waiting for approval</a>', 'article_new_postponed\[(.*)\]\[([0-9]{7,13})\]' => 'Posted new article (\\1); <a href="?mod=editnews&amp;source=postponed&amp;action=list">postponed until \\2</a>', 'article_new\[(.*)\]\[([0-9]{7,12})\]' => 'Posted new article (\\1); ID: <a href="show_news.php?subaction=showfull&amp;id=\\2">\\2</a>', 'article_del\[(.*)\]\[(.*)\]' => 'Deleted an article by \\2: \\1', 'article_del_err\[(.*)\]\[(.*)\]' => 'Deleted an article by \\2: \\1 with errors', 'article_del_mass\[([0-9]{1,5})\]' => 'Mass-deleted \\1 articles', 'article_del_mass_err\[([0-9]{1,5})\]\[([0-9]{1,5})\]' => 'Mass-deleted \\1 of \\2 selected articles (errors)', 'article_archive_new\[(.*)\]\[([0-9]{1,5})\]' => 'Created <a href="?mod=tools&amp;action=archive">new archive</a> (\\1) and put \\2 articles into it', 'article_cat_edit\[([0-9]{1,5})\]' => 'Changed the categories of \\1 articles', 'article_cat_edit_err\[([0-9]{1,5})\]\[([0-9]{1,5})\]' => 'Changed the categories of \\1 of \\2 selected articles (errors)', 'article_edit\[(.*)\]\[([0-9]{7,13})\]' => 'Edited an article by \\1 (ID: <a href="show_news.php?subaction=showfull&amp;id=\\2">\\2</a>)', 'article_noaccess\[([0-9]{7,13})\]' => 'Denied access to edit <a href="show_news.php?subaction=showfull&amp;id=\\1">\\1</a>', 'article_noperm\[([0-9]{7,13})]\[(edit|del)\]' => 'Denied: Tried to \\2 the article <a href="show_news.php?subaction=showfull&amp;id=\\1">\\1</a> by <b>tampering!</b>', 'backup_del\[(.*)\]' => 'Deleted a backup (\\1)', 'backup_del_fail\[(.*)\]' => 'Tried to delete the backup \\1 (errors)', 'backup_restore\[(.*)\]' => 'Restored the backup \\1', 'backup_new_fail\[(.*)\]' => 'Failed to create a new backup called \\1', 'backup_new\[(.*)\]' => 'Created a new backup: <a href="?mod=tools&amp;action=backup">\\1</a>', 'cat_new\[(.*)\]\[([0-9]{1,5})\]' => 'Created a new <a href="?mod=categories">category</a> called \\1 (ID: \\2)', 'cat_del\[(.*)\]\[([0-9]{1,5})\]' => 'Deleted the category \\1 (ID: \\2)', 'cat_edit\[(.*)\]\[([0-9]{1,5})\]' => 'Modified the <a href="?mod=categories">category</a> \\1 (ID: \\2)', 'comm_del_all\[([0-9]{7,13})\]' => 'Deleted all commentaries from the article with ID <a href="show_news.php?id=\\1&amp;subaction=showcomments">\\1</a>', 'comm_del\[(.*)\]\[([0-9]{7,13})\]' => 'Deleted a comment made by \\1 from article ID <a href="show_news.php?id=\\2&amp;subaction=showcomments">\\2</a>', 'comm_edit\[(.*)\]\[(.*)\]\[([0-9]{7,13})\]\[([0-9]{1,20})\]' => 'Modified a comment from \\1 (or \\2) (commid: \\3, newsid: <a href="?show_news.php?id=\\4&amp;subaction=showcomments">\\4</a>)', 'img_upload\[(.*)\]' => 'Uploaded a new file: <a href="?mod=images">\\1</a>', 'invalid_aid\[(.*)\]' => 'Supplied wrong input for <i>aid</i>: \\1 (tampering?)', 'invalid_backup\[(.*)\]' => 'Supplied wrong input for backup name: \\1 (tampering?)', 'invalid_img\[(.*)\]' => 'Tried to upload an invalid file: \\1 (tampering?)', 'invalid_ip\[(.*)\]' => 'Supplied an invalid IP in the IP Ban: \\1 (tampering?)', 'invalid_source\[(.*)\]' => 'Supplied wrong input for the <i>source</i> parameter: \\1 (tampering?)', 'ip_new\[(.*)\]' => 'Banned IP <a href="?mod=ipban">\\1</a>', 'ip_del\[(.*)\]' => 'Unbanned the IP \\1', 'login' => 'Logged in', 'loginban_del\[(.*)\]' => 'Removed <a href="?mod=more&amp;do=loginban">login ban</a> for \\1', 'login_fail\[(.*)\]' => 'Invalid login with username \\1 (<a href="?mod=more&amp;do=loginban">Login ban module</a>)', 'lostpw_fail\[(.*)\]\[(.*)\]' => 'Lost password request: \\1 and \\2 not in database.', 'lostpw_sent\[(.*)\]\[(.*)\]' => 'Lost password: Password for \\1 sent to \\2', 'lostpw_change\[(.*)\]\[(.*)\]' => '\\1 (\\2) changed his/her password with the lost password function.', 'lang_del\[(.*)\]' => 'Deleted the language file \\1.clf', 'lang_new\[(.*)\]' => 'Created new <a href="?mod=langs">language file</a>: \\1.clf', 'lang_edit\[(.*)\]' => 'Edited <a href="?mod=langs">language file</a> \\1.clf', 'options_personal' => 'Changed his/her personal options', 'register_new\[(.*)\]' => '\\1 registered', 'rss_config' => 'Changed the <a href="?mod=wizards&amp;action=rss">RSS configuration</a>', 'sysconfig' => 'Changed <a href="?mod=options&amp;action=syscon">system configurations</a>', 'template_new\[(.*)\]' => 'Created a <a href="?mod=options&amp;action=templates">new template</a>: \\1', 'template_del\[(.*)\]' => 'Deleted the template \\1', 'template_edit\[(.*)\]' => 'Edited the <a href="?mod=options&amp;action=templates">template</a> \\1', 'user_new\[(.*)\]\[([1-4])\]' => 'Created <a href="?mod=editusers&amp;action=list">new user</a>, \\1, with level \\2', 'user_del\[(.*)\]' => 'Deleted user \\1', ); foreach($array as $find => $replace){ $out = preg_replace('/^'.$find.'$/', $replace, $out); if($out != $in){ if($times > 1){ return $out.' ('.$times.' times)'; } return $out; } } if(preg_match('/^(article_approve|img_del)/', $in)){ $articles = preg_replace('/.*\[(.*)\]$/', '\\1', $in); if(preg_match('/^article_approve/', $in)){ $articles = explode(',', $articles); foreach($articles as $key => $article){ $articles[$key] = '<a href="show_news.php?subaction=showfull&amp;id='.$article.'">'.$article.'</a>'; } $out = 'Approved articles. (IDs: '.implode(',', $articles).')'; } else{ $out = 'Deleted images: '.$articles; } if($times > 1){ return $out.' ('.$times.' times)'; } return $out; } if(preg_match('/^article_approve_err/', $in)){ $approved = preg_replace('/^.*?\[([0-9]{1,5})\]\[([0-9]{1,5})\].*$/', '\\1_\\2', $in); $approved = explode('_', $approved); $ids = preg_replace('/^.*\[(.*)\]$/', '\\1', $in); $ids = explode(',', $ids); foreach($ids as $key => $id){ $ids[$key] = '<a href="show_news.php?subaction=showfull&amp;id='.$id.'">'.$id.'</a>'; } return 'Approved '.$approved[0].' of '.$approved[1].' articles (errors). IDs: '.implode(',', $ids); } if(preg_match('/^user_edit/', $in)){ $data = preg_replace('/^user_edit\[(.*)\]\[([1-4])\]\[(0|1)\]$/', '\\1_\\2_\\3', $in); $data = explode('_', $data); $out = 'Edited the <a href="?mod=editusers&amp;action=list">user</a> '.$data[0].'. User level: '.$data[1].'; '; if($data[2] == 1){ $out .= 'password modified.'; } else{ $out .= 'password unchanged.'; } } if($times > 1){ return $out.' ('.$times.' times)'; } return $out; }
+// END --
+	echo 'The table below shows the last 200 actions that have been taken. You cannot modify this log.<br><br>
+<form action="'.$PHP_SELF.'" method=post><input type=hidden name=mod value=more> <input type=hidden name=do value=hardlog>
+<table><tr><td valign=middle rowspan=2><b>Filters</b> &nbsp;</td><td>Name/IP: <input type=text name=byip value="'.htmlentities($byip).'"></td>
+<td><select name=byaction>'.$options.'</select></td>
+<td><input type=submit value=Show> &nbsp; </td></tr></table><br><br>
+<table style="width: 95%; margin: 10px auto;" cellspacing=0 cellpadding=5><tr><th nowrap="nowrap">Time</th><th nowrap="nowrap">User</th><th width="340px">Action</th><th nowrap="nowrap">IP</th></tr>';
+
+	if(!file_exists('./data/log.db.php')){ echo '<b>Error!</b> /data/log.db.php does not exist. Please create it and make it writable!!!'; exit; }
+
+	$log = file('./data/log.db.php');
+	$i = 0;
+
+	$last_name = '';
+	$last_ip = '';
+
+	if($reverse){ $byip = substr($byip, 1); }
+
+
+	foreach($log as $item){
+		$item = explode('|', $item); $item[3] = trim($item[3]);
+		if(strlen($item[1]) > 20){
+			$counter = 0;
+			for($i = 0; $i < strlen($item[1]); $i++){
+				if(in_array($item[1][$i], array(' ', "\r", "\n", "\t", '-'))){
+					$counter = 0; continue;
+				}
+				$counter++;
+				if($counter > 10){ $item[1] = substr($item[1], 0, $i).' '.substr($item[1], $i); $counter = 0; }
+			}
+		}
+
+		if($name_filter && strtolower($item[1]) != $byip && $item[3] != $byip){ if(!$reverse){ continue; } }
+		else{ if($reverse){ continue; } }
+		if($byaction){
+			$patterns = array('edit' => '(edit|sysconfig|options_personal|restore|approve|move)',
+				'err' => '(err|invalid|fail|noaccess)',
+				'new' => 'new',
+				'del' => 'del', );
+			if(!preg_match('/'.$patterns[$byaction].'/i', $item[2])){ continue; }
+		}
+
+		if($i % 2 == 1){ $bg = '#F7F6F4'; } else{ $bg = '#FFFFFF'; }
+
+		echo '<tr style="background-color: '.$bg.'; padding: 5px"><td>'.date('d M, H:i', (int) $item[0]).'</td><td align=center>';
+		if($last_name != $item[1]){ echo '<a href="?mod=more&amp;do=hardlog&amp;byip='.htmlentities($item[1]).'">'; }
+		if($item[1] == 'cnsys'){
+			echo '<span style="color: #555; font-family: \'Courier New\'">CN</span>';
+		}
+		else{ echo $item[1]; }
+		if($item[1] != $last_name){ echo '</a>'; $last_name = $item[1]; }
+		echo '</td><td>'.show_smart($item[2]).'</td><td align=right>';
+
+		if($last_ip != $item[3]){ echo '<a href="?mod=more&amp;do=hardlog&amp;byip='.$item[3].'">'; }
+		echo $item[3];
+		if($last_ip != $item[3]){ echo '</a>'; $last_ip = $item[3]; }
+		echo '</td></tr>';
+		$i++;
+	} 
+	echo '<tr><td style="padding: 10px" colspan=4>';
+	if($i == 0){ echo 'No entries could be shown'; }
+	else{ echo 'Showing <b>'.$i.'</b> entries.'; }
+	echo '</td></tr></table>';
+
+	if(substr(phpversion(), 0, 1) == '4'){ echo '<br /><b style="color: #b11">Warning</b>: You are using PHP4. This feature requires PHP5.'; }
+	// I know goodbyes are hard, but y'all need to say bye to PHP4
+
+}
+else{
+	$caz = 1;
+	echoheader('options', 'More');
+?>
+<b>About</b>
+<br>This module allows UTF-8 CuteNews users to customize their installation further and to check for some problems that may be occurring.
+<br>
+<br><b>1. Advanced Statistics</b>
+<br>&raquo; <a href="?mod=more&amp;do=stats">Statistics &amp; system check</a>
+<br>
+<br><b>2. Manage Spam Protection (Captcha)</b>
+<br>&raquo; <a href="?mod=more&amp;do=spam">Add, modify or remove spam protection</a>
+<br>
+<br><b>3. Login Bans</b>
+<br>&raquo; <a href="?mod=more&amp;do=loginban">Manage login bans</a>
+<br>
+<br><b>4. Action Logs</b>
+<br>&raquo; <a href="?mod=more&amp;do=hardlog">View latest user actions</a>
+<br><br>
+<?php
+}
+
+if(!$caz){
+	echo '<br><br>&raquo; <a href="?mod=more">Additional features overview</a>';
+}
+
+echofooter();
+?>

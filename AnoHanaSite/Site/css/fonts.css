@@ -1,0 +1,15 @@
+@font-face{
+	font-family: whitneyblack;
+	src: url('../fonts/whitneyblack.otf'),url('../fonts/whitneyblack.eot');
+}
+
+@font-face{
+	font-family: residentevil;
+	src: url('../fonts/residentevil.ttf'),url('../fonts/residentevil.eot');
+	
+}
+
+@font-face{
+	font-family: whitney;
+	src: url('../fonts/whitney.otf'),url('../fonts/whitney.eot');
+}

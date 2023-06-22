@@ -1,0 +1,33 @@
+#contact-form input{
+	border: 1px solid #999999;
+	padding: 5px;
+	font-size: 14px;
+	margin-bottom: 5px;
+	width: 170px;
+}
+
+#contact-form form{
+	border: 1px solid #999999;
+	width: 100%;
+	height: auto;
+	padding: 5px;
+}
+
+#contact-form #nick{
+	margin-right: 50px;
+}
+
+#contact-form #object{
+	width: 400px;
+}
+
+#contact-form #mex{
+	margin-top: 5px;
+	border: 1px solid #999999;
+	height: 250px;
+	width: 500px;
+}
+
+#contact-form #input{
+	cursor: pointer;
+}

@@ -1,0 +1,11 @@
+h1{
+	font-size: 26px;
+	font-family: whitneyblack;
+	padding-bottom: 4px;
+}
+
+#tune-container{
+	border: #dbdbdb 1px solid;
+	padding: 5px;
+	margin-bottom: 20px;
+}

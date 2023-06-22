@@ -1,0 +1,145 @@
+.news{
+	width: 610px;
+	height: auto;
+}
+
+.news-title{
+	width: 600px;
+	height: 28px;
+	background-image: url(../images/cutenews/titlebar.png);
+	background-repeat: repeat-x;
+	
+	color: #393737;
+	font-family: whitneyblack;
+	font-size: 19px;
+	text-shadow: 0px 0px 1px #393737;
+	padding-top: 6px;
+	padding-left: 10px;
+}
+
+.news-title a{
+	color: #393737;
+	font-family: whitneyblack;
+	font-size: 19px;
+
+	float: left;
+	text-shadow: 0px 0px 1px #393737;
+}
+
+.news-title a:hover{
+	color: #8f1313;
+	text-shadow: 0px 0px 1px #8f1313;
+}
+
+.news-info{
+	width: 590px;
+	margin: auto;
+	color: #6b6b6b;
+	font-size: 13px;
+}
+
+.comments-link{
+	float: right;
+}
+
+.avatar{
+	width: 170px;
+	height: 230px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+.news-content{
+	width: 410px;
+	margin-left: 10px;
+	float: left;
+	margin-top: 5px;
+	color: #6b6b6b;
+	font-size: 13px;
+}
+
+.news-content a{
+	font-size: 13px;
+}
+
+.full-news{
+	width: 600px;
+	margin-left: 10px;
+	margin-top: 5px;
+	color: #6b6b6b;
+	font-size: 13px;
+}
+
+.newsbl{
+	clear: left;
+	width: 610px;
+	height: 30px;
+}
+
+.comment{
+	width: 610px;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.comment-top{
+	width: 510px;
+	height: 15px;
+	background-color: #9c9c9c;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 5px;
+	margin-left: 100px;
+	color: #ffffff;
+}
+
+.comment-content{
+	width: 600px;
+	height: auto;
+	margin-right: 0px;
+	background-color: #dbdbdb;
+	-webkit-border-radius: 5px;
+	-webkit-border-top-right-radius: 0px;
+	-moz-border-radius: 5px;
+	-moz-border-radius-topright: 0px;
+	border-radius: 5px;
+	border-top-right-radius: 0px;
+	padding: 5px;
+	margin-left: 10px;
+	font-size: 13px;
+}
+
+#addcform{
+	padding-top: 30px;
+}
+
+#addcform input{
+	border: 1px solid #999999;
+	padding: 5px;
+	font-size: 14px;
+	margin-bottom: 5px;
+	width: 170px;
+}
+
+#inpbutton{
+	cursor: pointer;
+	border: 1px solid #999999;
+	padding: 5px;
+	font-size: 14px;
+	margin-bottom: 5px;
+	width: 170px;
+}
+
+#txtbox{
+	border: 1px solid #999999;
+	height: 150px;
+	width: 350px;
+	font-family: arial;
+	font-size: 13px;
+	color: #000000;
+}
